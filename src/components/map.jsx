@@ -20,7 +20,6 @@ const Map = (props) => {
     // })
    const Load = (marker) => {
     console.log("Marker: ", marker)
-    console.log("CLG FROM PC --- TEST")
    }
 
 
