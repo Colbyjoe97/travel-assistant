@@ -1,10 +1,22 @@
 import React, { Component } from "react";
-import { useParams } from "react-router-dom";
 import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
 import "./map.css";
-const google = window.google;
 
 const Map = (props) => {
+	const [map, setMap] = React.useState(null);
+
+	const onLoad = React.useCallback(function callback(map) {
+		// This is just an example of getting and using the map instance!!! don't just blindly copy!
+		const bounds = new window.google.maps.LatLngBounds(defaultCenter);
+		map.fitBounds(bounds);
+
+		setMap(map);
+	}, []);
+
+	const onUnmount = React.useCallback(function callback(map) {
+		setMap(null);
+	}, []);
+
 	const mapStyle = {
 		height: "100vh",
 		width: "100vw",
@@ -14,68 +26,25 @@ const Map = (props) => {
 		lng: -77.383237,
 	};
 
-    const marker = new google.maps.Marker({
-        position: { lat: 39.445857, lng: -77.384245,
-        title: "First Marker"}
-    })
-   const Load = (marker) => {
-    console.log("Marker: ", marker)
-   }
+	const Load = (marker) => {
+		console.log("Marker: ", marker, marker.position);
+	};
 
-
-	const locations = [
-		{
-			name: "Location 1",
-			location: {
-				lat: 39.44859,
-				lng: -77.383245,
-			},
-		},
-		{
-			name: "Location 2",
-			location: {
-				lat: 40.3917,
-				lng: -76.1649,
-			},
-		},
-		{
-			name: "Location 3",
-			location: {
-				lat: 41.3773,
-				lng: -75.1585,
-			},
-		},
-		{
-			name: "Location 4",
-			location: {
-				lat: 41.3797,
-				lng: -77.1682,
-			},
-		},
-		{
-			name: "Location 5",
-			location: {
-				lat: 39.4055,
-				lng: -77.1915,
-			},
-		},
-	];
+	const position = {
+		lat: 39.4055,
+		lng: -77.1915,
+	};
 
 	return (
 		<>
 			<LoadScript googleMapsApiKey="AIzaSyB8r6T0rh5o0NO8AnPda1JDdlQYY31y6Ak">
 				<GoogleMap
+					id="marker-example"
 					mapContainerStyle={mapStyle}
 					zoom={10}
 					center={defaultCenter}
 				>
-                    {
-                        locations.map(item => {
-                            return(
-                                <Marker key={item.name} onLoad={Load} position={item.position}/>
-                            )
-                        })
-                    }
+                    <Marker onLoad={Load} position={position} />
 				</GoogleMap>
 			</LoadScript>
 		</>
