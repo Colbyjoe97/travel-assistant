@@ -1,21 +1,9 @@
 import React, { Component } from "react";
-import { GoogleMap, LoadScript, Marker } from "@react-google-maps/api";
+import { GoogleMap, LoadScript, MarkerF } from "@react-google-maps/api";
 import "./map.css";
 
 const Map = (props) => {
 	const [map, setMap] = React.useState(null);
-
-	const onLoad = React.useCallback(function callback(map) {
-		// This is just an example of getting and using the map instance!!! don't just blindly copy!
-		const bounds = new window.google.maps.LatLngBounds(defaultCenter);
-		map.fitBounds(bounds);
-
-		setMap(map);
-	}, []);
-
-	const onUnmount = React.useCallback(function callback(map) {
-		setMap(null);
-	}, []);
 
 	const mapStyle = {
 		height: "100vh",
@@ -27,13 +15,9 @@ const Map = (props) => {
 	};
 
 	const Load = (marker) => {
-		console.log("Marker: ", marker, marker.position);
+		console.log("Marker: ", marker);
 	};
 
-	const position = {
-		lat: 39.4055,
-		lng: -77.1915,
-	};
 
 	return (
 		<>
@@ -44,7 +28,27 @@ const Map = (props) => {
 					zoom={10}
 					center={defaultCenter}
 				>
-                    <Marker onLoad={Load} position={position} />
+					<MarkerF
+						onLoad={Load}
+						position={{
+							lat: 39.3055,
+							lng: -77.1915,
+						}}
+					/>
+					<MarkerF
+						onLoad={Load}
+						position={{
+							lat: 39.4055,
+							lng: -77.1915,
+						}}
+					/>
+					<MarkerF
+						onLoad={Load}
+						position={{
+							lat: 39.5055,
+							lng: -77.1915,
+						}}
+					/>
 				</GoogleMap>
 			</LoadScript>
 		</>
