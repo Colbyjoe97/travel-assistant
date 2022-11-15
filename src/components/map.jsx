@@ -4,19 +4,21 @@ import "./map.css";
 
 const Map = (props) => {
     const [markers, setMarkers] = useState([])
+    const [defaultCenter, setDefaultCenter] = useState({
+        lat: 39.448587,
+        lng: -77.383237,
+    });
+
 
 	const mapStyle = {
 		height: "100vh",
 		width: "100vw",
 	};
-	const defaultCenter = {
-		lat: 39.448587,
-		lng: -77.383237,
-	};
 
-	const Load = (marker) => {
+
+	// const Load = (marker) => {
 		// console.log("Marker: ", marker);
-	};
+	// };
 
     const clickMap = (map) => {
         console.log("Map Clicked! ", map)
@@ -25,6 +27,7 @@ const Map = (props) => {
             lng: map.latLng.lng()
         }
         setMarkers([...markers, position])
+        setDefaultCenter({})
         console.log(markers)
         // console.log("Coords: ", map.latLng.lat())
         // console.log("Coords: ", map.latLng.lng())
@@ -40,12 +43,15 @@ const Map = (props) => {
 					mapContainerStyle={mapStyle}
 					zoom={10}
 					center={defaultCenter}
+                    className="map"
 				>
                     {
-                        markers.map((marker) => {
+                        markers.map((marker, i) => {
                             return(
-                                <MarkerF onLoad={ Load }
-                                    position={marker}></MarkerF>
+                                <MarkerF 
+                                    key={i}
+                                    position={marker}>
+                                </MarkerF>
                             )
                         })
                     }
