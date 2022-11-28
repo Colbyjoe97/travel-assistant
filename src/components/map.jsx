@@ -16,12 +16,11 @@ const Map = (props) => {
 		width: "calc(100vw - 300px)",
 	};
 
-<<<<<<< HEAD
     
    const Load = (marker) => {
     console.log("Marker: ", marker)
    }
-=======
+
     const clickMap = (map) => {
         console.log("Map Clicked! ", map)
         let position = {
@@ -34,7 +33,6 @@ const Map = (props) => {
         // console.log("Coords: ", map.latLng.lat())
         // console.log("Coords: ", map.latLng.lng())
     }
->>>>>>> 421ab107e63a66e7a9b2127c120ecf0bea0f3d07
 
     function getWindowDimensions() {
         const { innerWidth: sWidth, innerHeight: sHeight } = window;
