@@ -14,10 +14,7 @@ const Map = (props) => {
 		lng: -77.383237,
 	};
 
-    // const marker = new google.maps.Marker({
-    //     position: { lat: 39.445857, lng: -77.384245,
-    //     title: "First Marker"}
-    // })
+    
    const Load = (marker) => {
     console.log("Marker: ", marker)
    }
