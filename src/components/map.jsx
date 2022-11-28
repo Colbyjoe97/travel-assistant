@@ -3,7 +3,8 @@ import { GoogleMap, LoadScript, MarkerF } from "@react-google-maps/api";
 import "./map.css";
 
 const Map = (props) => {
-    const [markers, setMarkers] = useState([])
+    // const [markers, setMarkers] = useState([])
+    const [marker, setMarker] = useState({})
     const [defaultCenter, setDefaultCenter] = useState({
         lat: 39.448587,
         lng: -77.383237,
@@ -32,11 +33,12 @@ const Map = (props) => {
             lat: map.latLng.lat(),
             lng: map.latLng.lng()
         }
-        setMarkers([...markers, position])
+        setMarker({
+            lat: map.latLng.lat(),
+            lng: map.latLng.lng()
+        })
         setDefaultCenter({})
-        console.log(markers)
-        // console.log("Coords: ", map.latLng.lat())
-        // console.log("Coords: ", map.latLng.lng())
+        console.log(marker)
     }
 
     function getWindowDimensions() {
@@ -76,16 +78,11 @@ const Map = (props) => {
 					center={defaultCenter}
                     className="map"
 				>
-                    {
-                        markers.map((marker, i) => {
-                            return(
-                                <MarkerF 
-                                    key={i}
-                                    position={marker}>
-                                </MarkerF>
-                            )
-                        })
-                    }
+                    <MarkerF
+                    position={marker}
+                    >
+
+                    </MarkerF>
 				</GoogleMap>
 			</LoadScript>
 		</>
