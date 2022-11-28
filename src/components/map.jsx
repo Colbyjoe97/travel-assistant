@@ -1,75 +1,84 @@
-import React, { Component } from "react";
-import { useParams } from "react-router-dom";
+import React, { useState, useEffect } from "react";
 import { GoogleMap, LoadScript, MarkerF } from "@react-google-maps/api";
 import "./map.css";
-// const google = window.google;
 
 const Map = (props) => {
+    const [markers, setMarkers] = useState([])
+    const [defaultCenter, setDefaultCenter] = useState({
+        lat: 39.448587,
+        lng: -77.383237,
+    });
+    const { sHeight, sWidth } = useWindowDimensions();
+    console.log(sWidth)
+    
 	const mapStyle = {
 		height: "100vh",
-		width: "100vw",
-	};
-	const defaultCenter = {
-		lat: 39.448587,
-		lng: -77.383237,
+		width: "calc(100vw - 300px)",
 	};
 
+<<<<<<< HEAD
     
    const Load = (marker) => {
     console.log("Marker: ", marker)
    }
+=======
+    const clickMap = (map) => {
+        console.log("Map Clicked! ", map)
+        let position = {
+            lat: map.latLng.lat(),
+            lng: map.latLng.lng()
+        }
+        setMarkers([...markers, position])
+        setDefaultCenter({})
+        console.log(markers)
+        // console.log("Coords: ", map.latLng.lat())
+        // console.log("Coords: ", map.latLng.lng())
+    }
+>>>>>>> 421ab107e63a66e7a9b2127c120ecf0bea0f3d07
 
+    function getWindowDimensions() {
+        const { innerWidth: sWidth, innerHeight: sHeight } = window;
+        return {
+          sWidth,
+          sHeight
+        };
+      }
+      
+    function useWindowDimensions() {
+        const [windowDimensions, setWindowDimensions] = useState(getWindowDimensions());
+      
+        useEffect(() => {
+          function handleResize() {
+            setWindowDimensions(getWindowDimensions());
+          }
+      
+          window.addEventListener('resize', handleResize);
+          return () => window.removeEventListener('resize', handleResize);
+        }, []);
+      
+        return windowDimensions;
+      }
 
-	const locations = [
-		{
-			name: "Location 1",
-			location: {
-				lat: 39.44859,
-				lng: -77.383245,
-			},
-		},
-		{
-			name: "Location 2",
-			location: {
-				lat: 40.3917,
-				lng: -76.1649,
-			},
-		},
-		{
-			name: "Location 3",
-			location: {
-				lat: 41.3773,
-				lng: -75.1585,
-			},
-		},
-		{
-			name: "Location 4",
-			location: {
-				lat: 41.3797,
-				lng: -77.1682,
-			},
-		},
-		{
-			name: "Location 5",
-			location: {
-				lat: 39.4055,
-				lng: -77.1915,
-			},
-		},
-	];
 
 	return (
 		<>
+        {sWidth}
 			<LoadScript googleMapsApiKey="AIzaSyB8r6T0rh5o0NO8AnPda1JDdlQYY31y6Ak">
 				<GoogleMap
+                    onClick={ clickMap }
+					id="marker-example"
 					mapContainerStyle={mapStyle}
 					zoom={10}
 					center={defaultCenter}
+                    className="map"
 				>
                     {
-                        locations.map(item => {
+                        markers.map((marker, i) => {
                             return(
-                                <MarkerF key={item.name} onLoad={Load} position={item.position}/>
+                                <MarkerF 
+                                    key={i}
+                                    position={marker}>
+                                </MarkerF>
                             )
                         })
                     }
