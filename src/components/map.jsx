@@ -16,6 +16,11 @@ const Map = (props) => {
 		width: "calc(100vw - 300px)",
 	};
 
+	const mapStyleFull = {
+		height: "100vh",
+		width: "100vw",
+	};
+
     
    const Load = (marker) => {
     console.log("Marker: ", marker)
@@ -60,12 +65,13 @@ const Map = (props) => {
 
 	return (
 		<>
-        {sWidth}
 			<LoadScript googleMapsApiKey="AIzaSyB8r6T0rh5o0NO8AnPda1JDdlQYY31y6Ak">
 				<GoogleMap
                     onClick={ clickMap }
 					id="marker-example"
-					mapContainerStyle={mapStyle}
+                    mapContainerStyle={
+                        sWidth > 1200 ? mapStyle : mapStyleFull
+                    }
 					zoom={10}
 					center={defaultCenter}
                     className="map"
