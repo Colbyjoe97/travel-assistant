@@ -22,17 +22,13 @@ const Map = (props) => {
 	};
 
     const clickMap = (map) => {
-        console.log("Map Clicked! ", map)
-        let position = {
-            lat: map.latLng.lat(),
-            lng: map.latLng.lng()
-        }
+        // console.log("Map Clicked! ", map)
         setMarker({
             lat: map.latLng.lat(),
             lng: map.latLng.lng()
         })
         setDefaultCenter({})
-        console.log(marker)
+        // console.log(marker)
     }
 
     function getWindowDimensions() {
@@ -73,8 +69,8 @@ const Map = (props) => {
                     className="map"
 				>
                     <MarkerF
-                    position={marker}
-                    >
+                        position={marker}
+                        >
                     </MarkerF>
 				</GoogleMap>
 			</LoadScript>
