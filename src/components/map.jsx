@@ -3,7 +3,10 @@ import { GoogleMap, LoadScript, MarkerF } from "@react-google-maps/api";
 import "./map.css";
 
 const Map = (props) => {
-    const [marker, setMarker] = useState({})
+    const [marker, setMarker] = useState({
+        lat: 39.448587,
+        lng: -77.383237,
+    })
     const [defaultCenter, setDefaultCenter] = useState({
         lat: 39.448587,
         lng: -77.383237,
@@ -75,7 +78,6 @@ const Map = (props) => {
                     <MarkerF
                     position={marker}
                     >
-
                     </MarkerF>
 				</GoogleMap>
 			</LoadScript>

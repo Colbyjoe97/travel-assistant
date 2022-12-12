@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import Map from './components/map'
+import Sidebar from './components/sidebar'
 
 function App() {
   return (
