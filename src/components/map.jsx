@@ -3,7 +3,6 @@ import { GoogleMap, LoadScript, MarkerF } from "@react-google-maps/api";
 import "./map.css";
 
 const Map = (props) => {
-    // const [markers, setMarkers] = useState([])
     const [marker, setMarker] = useState({})
     const [defaultCenter, setDefaultCenter] = useState({
         lat: 39.448587,
@@ -21,11 +20,6 @@ const Map = (props) => {
 		height: "100vh",
 		width: "100vw",
 	};
-
-    
-   const Load = (marker) => {
-    console.log("Marker: ", marker)
-   }
 
     const clickMap = (map) => {
         console.log("Map Clicked! ", map)
