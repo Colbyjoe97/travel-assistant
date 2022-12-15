@@ -8,8 +8,7 @@ const Map = (props) => {
         lat: props.lat,
         lng: props.lng,
     });
-    console.log("PROPS", "LAT:", props.lat, 
-    "LNG:", props.lng)
+    // console.log("PROPSsss", "LAT:", props.center.lat, "LNG:", props.center.lng)
     const { sHeight, sWidth } = useWindowDimensions();
     // console.log(sWidth)
     
@@ -67,7 +66,7 @@ const Map = (props) => {
                         sWidth > 1200 ? mapStyle : mapStyleFull
                     }
 					zoom={10}
-					center={defaultCenter}
+					center={props.center}
                     className="map"
 				>
                     <MarkerF
