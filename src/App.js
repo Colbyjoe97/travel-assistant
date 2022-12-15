@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import Map from './components/map'
 import Sidebar from './components/sidebar'
+import Location from './components/getLocation'
 
 function App() {
   return (
@@ -10,7 +11,8 @@ function App() {
             <h1>Sidebar</h1>
         </div>
         <div className="app-right">
-            <Map />
+            {/* <Map /> */}
+            <Location />
         </div>
     </div>
   );
