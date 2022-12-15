@@ -8,7 +8,7 @@ const Map = (props) => {
         lat: props.lat,
         lng: props.lng,
     });
-    // console.log("PROPSsss", "LAT:", props.center.lat, "LNG:", props.center.lng)
+    // console.log("PROPS", "LAT:", props.center.lat, "LNG:", props.center.lng)
     const { sHeight, sWidth } = useWindowDimensions();
     // console.log(sWidth)
     
