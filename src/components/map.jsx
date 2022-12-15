@@ -4,13 +4,7 @@ import "./map.css";
 
 const Map = (props) => {
     const [marker, setMarker] = useState({})
-    const [defaultCenter, setDefaultCenter] = useState({
-        lat: props.lat,
-        lng: props.lng,
-    });
-    // console.log("PROPS", "LAT:", props.center.lat, "LNG:", props.center.lng)
     const { sHeight, sWidth } = useWindowDimensions();
-    // console.log(sWidth)
     
 	const mapStyle = {
 		height: "100vh",
@@ -23,13 +17,10 @@ const Map = (props) => {
 	};
 
     const clickMap = (map) => {
-        // console.log("Map Clicked! ", map)
         setMarker({
             lat: map.latLng.lat(),
             lng: map.latLng.lng()
         })
-        setDefaultCenter({})
-        // console.log(marker)
     }
 
     function getWindowDimensions() {
