@@ -5,11 +5,13 @@ import "./map.css";
 const Map = (props) => {
     const [marker, setMarker] = useState({})
     const [defaultCenter, setDefaultCenter] = useState({
-        lat: 39.448587,
-        lng: -77.383237,
+        lat: props.lat,
+        lng: props.lng,
     });
+    console.log("PROPS", "LAT:", props.lat, 
+    "LNG:", props.lng)
     const { sHeight, sWidth } = useWindowDimensions();
-    console.log(sWidth)
+    // console.log(sWidth)
     
 	const mapStyle = {
 		height: "100vh",
