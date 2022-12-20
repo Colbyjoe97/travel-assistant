@@ -56,7 +56,7 @@ const Map = (props) => {
                     mapContainerStyle={
                         sWidth > 1200 ? mapStyle : mapStyleFull
                     }
-					zoom={10}
+					zoom={12}
 					center={props.center}
                     className="map"
 				>
